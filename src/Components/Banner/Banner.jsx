@@ -1,5 +1,6 @@
 import { FaArrowDown } from "react-icons/fa";
 import { scrollTo } from "../Utlis/scrollSmoth";
+import { GrContact, GrProjects } from "react-icons/gr";
 
 export default function Banner() {
   //   const scrollTo = (id) => {
@@ -44,15 +45,17 @@ export default function Banner() {
       {/* Buttons */}
       <div className="mt-8 flex gap-4">
         <button
-          onClick={() => scrollTo("#project")}
-          className="cursor-pointer px-6 py-3 bg-black text-white rounded-lg shadow hover:opacity-80 transition"
+          onClick={() => scrollTo("#projects")}
+          className="cursor-pointer px-6 py-3 bg-black text-white rounded-lg shadow hover:opacity-80 transition flex items-center gap-2"
         >
+          <GrProjects />
           View Projects
         </button>
         <button
           onClick={() => scrollTo("#contact")}
-          className="cursor-pointer px-6 py-3 border rounded-lg hover:bg-gray-100 transition"
+          className="cursor-pointer px-6 py-3 border rounded-lg hover:bg-gray-100 transition flex items-center gap-2"
         >
+          <GrContact />
           Contact Me
         </button>
       </div>

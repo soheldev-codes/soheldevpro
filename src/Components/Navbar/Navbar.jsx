@@ -18,8 +18,11 @@ export default function Navbar() {
           {navLinks.map((link, i) => (
             <li key={i} className="relative group cursor-pointer">
               <a
-                onClick={() => scrollTo(`#${link.toLowerCase()}`)}
-                // href={`#${link.toLowerCase()}`}
+                href={`#${link.toLowerCase()}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(`#${link.toLowerCase()}`);
+                }}
                 className="text-gray-700 hover:text-black transition"
               >
                 {link}

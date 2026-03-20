@@ -48,10 +48,18 @@ export default function Contact() {
           {/* Social */}
           <p className="text-sm text-gray-400 mb-2">FIND ME ON</p>
           <div className="flex gap-3">
-            <a className="p-3 border border-gray-300 cursor-pointer rounded-lg hover:bg-gray-100 ">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/soheldev-code/"
+              className="p-3 border border-gray-300 cursor-pointer rounded-lg hover:bg-gray-100 "
+            >
               <FaGithub />
             </a>
-            <a className="p-3 border border-gray-300 cursor-pointer rounded-lg hover:bg-gray-100 ">
+            <a
+              target="_blank"
+              href="https://github.com/soheldev-codes"
+              className="p-3 border border-gray-300 cursor-pointer rounded-lg hover:bg-gray-100 "
+            >
               <FaLinkedin />
             </a>
           </div>
