@@ -1,3 +1,5 @@
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 import {
   FaEnvelope,
   FaWhatsapp,
@@ -7,6 +9,24 @@ import {
 } from "react-icons/fa";
 
 export default function Contact() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_rlwah3g", "template_9spqfqa", form.current, {
+        publicKey: "yM-yYrcMC4I4WCBFD",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!", form.current);
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        },
+      );
+  };
   return (
     <section id="contact" className="max-w-7xl mx-auto px-6 py-20">
       <p className="text-sm tracking-widest text-gray-500 mb-2">CONTACT</p>
@@ -66,30 +86,39 @@ export default function Contact() {
         </div>
 
         {/* Right Form */}
-        <div className="border border-gray-300 rounded-2xl p-6 shadow-sm">
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <input
-              type="text"
-              placeholder="Your name"
-              className="border border-gray-300 rounded-lg p-3 outline-none  w-full"
-            />
-            <input
-              type="email"
-              placeholder="you@example.com"
-              className="border border-gray-300 rounded-lg p-3 outline-none  w-full"
-            />
-          </div>
+        <section className="border border-gray-300 rounded-2xl p-6 shadow-sm">
+          <form ref={form} onSubmit={sendEmail}>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <input
+                type="text"
+                name="user_name"
+                placeholder="Your name"
+                className="border border-gray-300 rounded-lg p-3 outline-none w-full"
+                required
+              />
 
-          <textarea
-            rows="5"
-            placeholder="Tell me about your project or opportunity..."
-            className="border border-gray-300 rounded-lg p-3 w-full mb-4 outline-none "
-          />
+              <input
+                type="email"
+                name="user_email"
+                placeholder="you@example.com"
+                className="border border-gray-300 rounded-lg p-3 outline-none w-full"
+                required
+              />
+            </div>
 
-          <button className="w-full cursor-pointer bg-black text-white py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition">
-            <FaPaperPlane /> Send Message
-          </button>
-        </div>
+            <textarea
+              rows="5"
+              name="message"
+              placeholder="Tell me about your project or opportunity..."
+              className="border border-gray-300 rounded-lg p-3 w-full mb-4 outline-none"
+              required
+            />
+
+            <button className="w-full cursor-pointer bg-black text-white py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition">
+              <FaPaperPlane /> Send Message
+            </button>
+          </form>
+        </section>
       </div>
     </section>
   );

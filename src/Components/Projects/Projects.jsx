@@ -5,22 +5,29 @@ import { VscLiveShare } from "react-icons/vsc";
 const projects = [
   {
     id: 1,
-    title: "Appzone",
-    desc: "AppZone is a modern app marketplace web application where users can explore trending apps, view detailed information, and install/uninstall apps easily. It also includes a dashboard to track app statistics like downloads, active users, and reviews.",
-    image: "https://i.ibb.co.com/0RDK0vF7/Appzone.png",
-    tech: ["React JS", "React-Router", "Tailwind CSS"],
-    live: "https://appzonepro.netlify.app/",
-    github: "https://github.com/soheldev-codes/AppZone",
+    title: "Book Nest",
+    desc: "A modern and responsive web application that digitizes the traditional library experience. Users can explore books, filter by categories, and borrow books securely with authentication.",
+    image: "https://i.ibb.co.com/HTK3RJbc/book-nest.png",
+    tech: ["Next.js", "Tailwind CSS", "DaisyUI", "BetterAuth", "MongoDB"],
+    live: "https://booknest-psi.vercel.app",
+    client: "https://github.com/soheldev-codes/BookNest",
   },
   {
     id: 2,
-    title: "GitHub Issue Tracker",
+    title: "Adoptify",
     desc: "A modern and responsive Issue Tracker web application inspired by GitHub, where users can log in, browse issues, filter them based on status, and search efficiently.",
-    image:
-      "https://i.ibb.co.com/YFG9Fk7b/screencapture-soheldev-codes-github-io-Github-Issues-main-html-2026-03-20-16-30-36.png",
-    tech: ["Html", "Tailwind CSS", "Javascript"],
-    live: "https://soheldev-codes.github.io/Github_Issues/",
-    github: "https://github.com/soheldev-codes/Github_Issues",
+    image: "https://i.ibb.co.com/pvKsxs9G/Adoptify.png",
+    tech: [
+      "Next.js",
+      "Tailwind CSS",
+      "HeroUI",
+      "BetterAuth",
+      "Express JS",
+      "MongoDB",
+    ],
+    live: "https://adoptify-client-black.vercel.app",
+    client: "https://github.com/soheldev-codes/Adoptify-Client",
+    server: "https://github.com/soheldev-codes/Adoptify-Server",
   },
 ];
 
@@ -60,7 +67,7 @@ export default function Projects() {
 
               {/* Tech */}
               <div className="flex flex-wrap gap-2">
-                {project.tech.map((t, i) => (
+                {project?.tech.map((t, i) => (
                   <span
                     key={i}
                     className="text-xs font-semibold px-3 py-1 bg-gray-100 rounded-full"
@@ -72,14 +79,27 @@ export default function Projects() {
 
               {/* Buttons */}
               <div className="flex gap-4 pt-4 ">
+                {project?.server && (
+                  <button className="flex-1 border rounded-lg py-2 text-sm hover:bg-gray-100 transition">
+                    <a
+                      className="flex items-center justify-center font-semibold gap-2"
+                      target="_blank"
+                      href={project.server}
+                    >
+                      <FaGithub className="text-xl" />
+                      Server
+                    </a>
+                  </button>
+                )}
+
                 <button className="flex-1 border rounded-lg py-2 text-sm hover:bg-gray-100 transition">
                   <a
                     className="flex items-center justify-center font-semibold gap-2"
                     target="_blank"
-                    href={project.github}
+                    href={project?.client}
                   >
                     <FaGithub className="text-xl" />
-                    Source Code
+                    Client
                   </a>
                 </button>
 
